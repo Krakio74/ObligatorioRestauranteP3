@@ -1,0 +1,177 @@
+﻿
+@{
+    var Usuarios = ViewData["UsuariosTotales"] as int? ?? 0;
+    var Clientes = ViewData["ClientesTotales"] as int? ?? 0;
+    var Empleados = ViewData["EmpleadosTotales"] as int? ?? 0;
+
+
+    var ClientesVip = ViewData["ClientesVip"] as int? ?? 0;
+    var ClientesFrecuentes = ViewData["ClientesFrecuentes"] as int? ?? 0;
+    var ClientesNuevos = ViewData["ClientesNuevos"] as int? ?? 0;
+
+
+
+
+    var totalReseñas = ViewData["TotalReseñas"] as int? ?? 0;
+    var promedio = ViewData["Promedio"] as double? ?? 0.0;
+
+
+    var totalPlatos = ViewData["totalPlatos"] as int? ?? 0;
+    var totalEntradas = ViewData["totalEntradas"] as int? ?? 0;
+    var totalPrincipales = ViewData["totalPrincipales"] as int? ?? 0;
+    var totalPostres = ViewData["totalPostres"] as int? ?? 0;
+    var totalBebidas = ViewData["totalBebidas"] as int? ?? 0;
+
+}
+
+
+
+
+
+
+<div class="stats-sections">
+   <div class="stats-top">
+        <div class="stats-left">
+           <div class="stats-global">
+
+
+           </div>
+
+        </div>
+        <div class="stats-right">
+            <div class="stats-users">
+                <div class="stats-group">
+                    <div class="stats-headder">
+                        <h1>Usuarios</h1>
+                        <i class="bi bi-bar-chart"></i>
+                    </div>
+                    <div class="stats-field">
+                        <h3>Usuarios registrados</h3>
+                        <p>@Usuarios</p>
+                    </div>
+                    <div class="stats-body">
+                        <div class="stats-mid">
+                            <div class="stats-field">
+                                <h3>Clientes</h3>
+                                <p>@Clientes</p>
+                            </div>
+                            <div class="stats-field">
+                                <h3>Vip</h3>
+                                <p>@ClientesVip</p>
+                            </div>
+                            <div class="stats-field">
+                                <h3>Frecuentes</h3>
+                                <p>@ClientesFrecuentes</p>
+                            </div>
+                            <div class="stats-field">
+                                <h3>Nuevos</h3>
+                                <p>@ClientesNuevos</p>
+                            </div>
+                        </div>
+                        <div class="stats-mid">
+                            <div class="stats-field">
+                                <h3>Empleados</h3>
+                                <p>@Empleados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-reviews">
+
+                <div class="stats-group">
+
+                    <div class="stats-headder">
+                        <h1>Reseñas</h1>
+                        <i class="bi bi-bar-chart"></i>
+                    </div>
+                    <div class="stats-field">
+                        <h3>Reseñas Totales</h3>
+                        <p>@totalReseñas</p>
+                    </div>
+                    <div class="stats-field">
+                        <h3>Promedio de puntuaciones</h3>
+                        <p>@promedio</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+   </div>
+
+
+
+
+   <div class="stats-bottom">
+       <div class="stats-left">
+            <div class="stats-group">
+                <div class="stats-headder">
+                    <h1>Ventas</h1>
+                    <i class="bi bi-bar-chart"></i>
+                </div>
+                <div class="stats-field">
+                    <h3>Ganancias totales</h3>
+                    <p>@totalReseñas</p>
+                </div>
+                <div class="stats-field">
+                    <h3>Promedio de puntuaciones</h3>
+                    <p>@promedio</p>
+                </div>
+            </div>
+       </div>
+        <div class="stats-right">
+            <div class="stats-group">
+
+                <div class="stats-headder">
+                    <h1>Menus</h1>
+                    <i class="bi bi-bar-chart"></i>
+                </div>
+                <div class="stats-field">
+                    <h3>Platos Totales</h3>
+                    <p>@totalPlatos</p>
+                </div>
+                <div class="stats-field">
+                    <h3>Entradas</h3>
+                    <p>@totalEntradas</p>
+                </div>
+                <div class="stats-field">
+                    <h3>Principales</h3>
+                    <p>@totalPrincipales</p>
+                </div>
+                <div class="stats-field">
+                    <h3>Postres</h3>
+                    <p>@totalPostres</p>
+                </div>
+                <div class="stats-field">
+                    <h3>Bebidas</h3>
+                    <p>@totalBebidas</p>
+                </div>
+
+            </div>
+        </div>
+   </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

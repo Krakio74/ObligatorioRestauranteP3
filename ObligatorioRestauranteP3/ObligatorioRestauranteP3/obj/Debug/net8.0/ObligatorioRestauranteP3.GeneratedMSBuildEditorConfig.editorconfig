@@ -1,47 +1,275 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ObligatorioRestauranteP3
 build_property.RootNamespace = ObligatorioRestauranteP3
-build_property.ProjectDir = C:\Users\agust\source\repos\ObligatorioRestauranteP3\ObligatorioRestauranteP3\
+build_property.ProjectDir = C:\Users\agust\Downloads\Obligatorio Restaurante\Obligatorio Restaurante\Programa Obligatorio Restaurante\ObligatorioRestauranteP3\ObligatorioRestauranteP3\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\agust\source\repos\ObligatorioRestauranteP3\ObligatorioRestauranteP3
+build_property.MSBuildProjectDirectory = C:\Users\agust\Downloads\Obligatorio Restaurante\Obligatorio Restaurante\Programa Obligatorio Restaurante\ObligatorioRestauranteP3\ObligatorioRestauranteP3
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/agust/source/repos/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Home/Index.cshtml]
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/agust/source/repos/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Home/Privacy.cshtml]
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/agust/source/repos/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Shared/Error.cshtml]
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/agust/source/repos/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/agust/source/repos/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/_ViewImports.cshtml]
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Menus/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZW51c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Menus/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZW51c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Menus/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZW51c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Menus/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZW51c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Menus/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZW51c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Mesas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZXNhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Mesas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZXNhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Mesas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZXNhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Mesas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZXNhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Mesas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xNZXNhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/OrdenDetalles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbkRldGFsbGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/OrdenDetalles/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbkRldGFsbGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/OrdenDetalles/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbkRldGFsbGVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/OrdenDetalles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbkRldGFsbGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/OrdenDetalles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbkRldGFsbGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Ordens/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Ordens/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Ordens/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Ordens/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Ordens/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xPcmRlbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Pagoes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xQYWdvZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Pagoes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xQYWdvZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Pagoes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xQYWdvZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Pagoes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xQYWdvZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Pagoes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xQYWdvZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reservas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlcnZhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reservas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlcnZhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reservas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlcnZhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reservas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlcnZhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reservas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlcnZhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reseña/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlw7FhXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reseña/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlw7FhXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reseña/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlw7FhXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reseña/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlw7FhXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Reseña/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXNlw7FhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Restaurantes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXN0YXVyYW50ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Restaurantes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXN0YXVyYW50ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Restaurantes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXN0YXVyYW50ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Restaurantes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXN0YXVyYW50ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Restaurantes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xSZXN0YXVyYW50ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Usuarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xVc3Vhcmlvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Usuarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xVc3Vhcmlvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Usuarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xVc3Vhcmlvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Usuarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xVc3Vhcmlvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/ViewsCruds/Usuarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld3NDcnVkc1xVc3Vhcmlvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaAdministracion/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFBZG1pbmlzdHJhY2lvblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaCajeros/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFDYWplcm9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaEstadisticas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFFc3RhZGlzdGljYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaLogin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFMb2dpblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaMenus/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFNZW51c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaPerfil/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFQZXJmaWxcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaPerfil/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFQZXJmaWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaRegistros/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFSZWdpc3Ryb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaReservas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFSZXNlcnZhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/VistaReseñas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFSZXNlw7Fhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/agust/source/repos/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/_ViewStart.cshtml]
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/agust/source/repos/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Shared/_Layout.cshtml]
+[C:/Users/agust/Downloads/Obligatorio Restaurante/Obligatorio Restaurante/Programa Obligatorio Restaurante/ObligatorioRestauranteP3/ObligatorioRestauranteP3/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-nmh0hoi008

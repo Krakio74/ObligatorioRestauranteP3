@@ -1,0 +1,229 @@
+﻿@model ObligatorioRestauranteP3.Models.VistaMenu
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<string> fotos = ViewBag.FotoRestaurantes;
+    List<string> fotosMenu = ViewBag.FotoMenu;
+
+}
+<div class="rs-header">
+    <form asp-action="Index" class="post-bar">
+        <input type="text" name="buscar" placeholder="Buscar restaurante..." class="post-text" id="input-search" />
+        <button type="submit" class="post-btn">Buscar</button>
+    </form>
+</div>
+
+
+<div class="restaurant-section">
+
+
+    <div class="restaurant-list">
+        @foreach (var restaurante in Model.Restaurantes)
+        {
+
+            string showFoto = "";
+                    foreach (var foto in fotos)
+                    {
+                        var fotoId = foto.Split('.');
+                        if (fotoId[0] == restaurante.Id.ToString())
+                        {
+                            showFoto = foto;
+                            break;
+                        }
+                    }
+
+
+            var isSelected = (ViewData["restauranteId"] != null && (int)ViewData["restauranteId"] == restaurante.Id);
+            <div class="restaurant-card @(isSelected ? "selected" : "")">
+                <div class="rc-pic">
+                    <img src="@Url.Content("~/Fotos/FotoRestaurantes/")@showFoto">  
+                </div>
+                <div class="rc-prop rc-name">
+                    @restaurante.Nombre
+                </div>
+                <div class="rc-prop">
+                    <i class="bi bi-geo-alt"></i>
+                    @restaurante.Direccion
+                </div>
+                <div class="rc-prop">
+                    <i class="bi bi-telephone"></i>
+                    @restaurante.Telefono
+                </div>
+                <div class="rc-prop rc-date">
+                    <i class="bi bi-clock"></i>
+                    @restaurante.HoraApertura
+                    <label> - </label>
+                    @restaurante.HoraCierre
+                </div>
+
+                <div class="rc-prop">
+                    <form asp-controller="VistaMenus" asp-action="Index" method="get">
+                        <input type="hidden" name="restauranteId" value="@restaurante.Id" />
+                        <button type="submit" class="select-btn">Seleccionar</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="menu-section">
+
+    <nav class="menu-navbar">
+        <div class="menu-category">
+            <a class="menu-opt" href="@Url.Action("Index", new { categoria = "Todo", restauranteId = ViewData["restauranteId"] })">Todo</a>
+            <a class="menu-opt" href="@Url.Action("Index", new { categoria = "Entradas", restauranteId = ViewData["restauranteId"] })">Entradas</a>
+            <a class="menu-opt" href="@Url.Action("Index", new { categoria = "Principales", restauranteId = ViewData["restauranteId"] })">Platos Principales</a>
+            <a class="menu-opt" href="@Url.Action("Index", new { categoria = "Postres", restauranteId = ViewData["restauranteId"] })">Postres</a>
+            <a class="menu-opt" href="@Url.Action("Index", new { categoria = "Bebidas", restauranteId = ViewData["restauranteId"] })">Bebidas</a>
+        </div>
+
+    </nav>
+
+
+
+
+
+    <table class="menu-table">
+        @foreach (var group in Model.Menus.Select((menu, index) => new { Menu = menu, Index = index }).GroupBy(x => x.Index / 3))
+        {
+            <tr>
+                @foreach (var item in group)
+                {
+                    var menu = item.Menu;
+
+                    string showFoto = "";
+                    foreach (var foto in fotosMenu)
+                    {
+                        var fotoId = foto.Split('.');
+                        if (fotoId[0] == menu.Id.ToString())
+                        {
+                            showFoto = foto;
+                            break;
+                        }
+                    }
+
+                    <td>
+                        <div class="menu-group">
+                            <div class="menu-header">
+                                <div class="menu-pic">
+                                    <img src="@Url.Content("~/Fotos/FotoMenu/")@showFoto">
+                                </div>
+                                <div class="menu-cat">
+                                    <i class="
+                               @if (menu.Categoria == "Entradas") {
+                                    <text>bi bi-star entradas-icon</text>
+                                }
+                                else if (menu.Categoria == "Principales") {
+                                    <text>bi bi-egg-fried principales-icon</text>
+                                }
+                                else if (menu.Categoria == "Postres") {
+                                    <text>bi bi-egg postres-icon</text>
+                                }
+                                else if (menu.Categoria == "Bebidas") {
+                                    <text>bi bi-cup-straw bebidas-icon</text>
+                                }
+                                        "></i>
+                                </div>
+                            </div>
+
+                            <div class="menu-info">
+                                <div class="menu-name">
+                                    @menu.NombrePlato
+                                </div>
+                                <div class="menu-desc">
+                                    @menu.Descripcion
+                                </div>
+                            </div>
+                            <div class="menu-price">
+                                $@menu.Precio
+                            </div>
+                        </div>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ @*    <table class="menu-table">
+    @for (int i = 0; i < Model.Menus.Count; i += 3)
+    {
+        <tr>
+            @for (int j = i; j < Math.Min(i + 3, Model.Menus.Count); j++)
+            {
+                var menu = Model.Menus[j];
+                string showFoto = "";
+                foreach (var foto in fotos)
+                {
+                    var fotoId = foto.Split('.');
+                    if (fotoId[0] == menu.Id.ToString())
+                    {
+                        showFoto = foto;
+                        break;
+                    }
+                }
+
+                <td>
+                    <div class="menu-group">
+                        <div class="menu-header">
+                            <div class="menu-pic">
+                                <img src="@Url.Content("~/Fotos/FotosMenus/")@showFoto">
+                            </div>
+                            <div class="menu-cat">
+                                <i class="
+                                @if (menu.Categoria == "Entradas") {
+                                    <text>bi bi-star entradas-icon</text>
+                                }
+                                else if (menu.Categoria == "Principales") {
+                                    <text>bi bi-egg-fried principales-icon</text>
+                                }
+                                else if (menu.Categoria == "Postres") {
+                                    <text>bi bi-egg postres-icon</text>
+                                }
+                                else if (menu.Categoria == "Bebidas") {
+                                    <text>bi bi-cup-straw bebidas-icon</text>
+                                }
+                                "></i>
+                            </div>
+                        </div>
+
+                        <div class="menu-info">
+                            <div class="menu-name">
+                                @menu.NombrePlato
+                            </div>
+                            <div class="menu-desc">
+                                @menu.Descripcion
+                            </div>
+                        </div>
+                        <div class="menu-price">
+                            $@menu.Precio
+                        </div>
+                    </div>
+                </td>
+            }
+        </tr>
+    }
+</table> *@
+</div>
+
+
+
