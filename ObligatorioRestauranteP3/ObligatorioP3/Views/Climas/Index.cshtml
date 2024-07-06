@@ -1,0 +1,144 @@
+﻿@model List<ObligatorioP3.Models.Clima>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima Actual</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .weather-info {
+            margin-top: 20px;
+        }
+
+            .weather-info p {
+                margin: 10px 0;
+                font-size: 18px;
+            }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s;
+            margin-top: 10px; /* Añadido para separar el botón del select */
+            width: 50%;
+            height: 50%;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        #idioma {
+            margin-bottom: 10px; /* Añadido para separar el select del resto del contenido */
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+<div class="container">
+    <h1>Clima Actual</h1>
+    <select id="idioma" placeholder="Seleccione un idioma">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+        <option value="pt">Portugués</option>
+        <option value="ja">Japonés</option>
+    </select>
+    <select id="ubicacion" placeholder="Seleccione la ubicacion">
+        <optgroup label="Uruguay">
+            <option value="Maldonado,uy">Maldonado</option>
+            <option value="Montevideo,uy">Montevideo</option>
+            <option value="San Carlos,uy">San Carlos</option>
+        </optgroup>
+        <optgroup label="Argentina">
+            <option value="Buenos Aires,ar">Buenos Aires Capital</option>
+            <option value="Belgrano,ar">Belgrano</option>
+            <option value="Tigre,ar">Tigre</option>
+        </optgroup>
+    </select>
+    <a href="#" id="actualizarBtn" class="btn">Actualizar Clima</a>
+    <div class="weather-info">
+        <p id="fecha">Fechas: </p>
+        <p id="temperatura">Temperatura: </p>
+        <p id="descripcion">Descripción del Clima: </p>
+    </div>
+
+</div>
+</html>
+
+<script>
+    // Función para obtener y mostrar datos de clima desde la API
+    async function obtenerDatosClima(idioma) {
+        const apiKey = "0b76000eed108b2fa4003781b7b33044"; // Reemplaza esto con tu clave API
+        const ubicacion = document.getElementById("ubicacion").value; // Obtener la ubicación seleccionada desde el select
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${ubicacion}&lang=${idioma}&appid=${apiKey}`;
+
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error('Error al obtener los datos del clima');
+            }
+            const data = await response.json();
+
+            // Convertir la temperatura de Kelvin a Celsius
+            const temperaturaCelsius = data.main.temp - 273.15;
+
+            // Crear objeto de clima con los datos de la API
+            var clima = {
+                fecha: new Date().toLocaleString(),
+                temperatura: `${temperaturaCelsius.toFixed(2)} °C`, // Mostrar la temperatura en Celsius
+                descripcion: data.weather[0].description // Descripción del clima en el idioma seleccionado
+            };
+
+            // Actualizar la vista con los nuevos datos de clima
+            actualizarClima(clima);
+        } catch (error) {
+            console.error('Error al obtener datos del clima:', error);
+            alert('Error al obtener datos del clima. Por favor, inténtalo de nuevo más tarde.');
+        }
+    }
+
+    // Función para actualizar la información del clima en la interfaz de usuario
+    function actualizarClima(clima) {
+        document.getElementById("fecha").textContent = "Fecha: " + clima.fecha;
+        document.getElementById("temperatura").textContent = "Temperatura: " + clima.temperatura;
+        document.getElementById("descripcion").textContent = "Descripción del Clima: " + clima.descripcion;
+    }
+
+    // Llamar a la función para obtener y mostrar los datos de clima al cargar la página
+    
+    // Ejemplo de actualización de datos de clima al hacer clic en el botón "Actualizar Clima"
+    document.getElementById("actualizarBtn").addEventListener("click", function (event) {
+        event.preventDefault();  // Evitar que el enlace recargue la página
+        const idiomaSeleccionado = document.getElementById("idioma").value;
+        obtenerDatosClima(idiomaSeleccionado); // Obtener y mostrar los datos de clima actualizados en el idioma seleccionado
+    });
+</script>
+
+
+</html>

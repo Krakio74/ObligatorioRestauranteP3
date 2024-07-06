@@ -1,0 +1,113 @@
+﻿@model IEnumerable<ObligatorioP3.Models.Menu>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="crud-bar">
+
+    <div class="mid-crud-bar">
+
+        <div class="dropdown">
+
+            <button class="def-btn" id="dropdown-cruds-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menus
+                <i class="fas fa-chevron-down btn-icon"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown-cruds-btn">
+                <a class="dropdown-item" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Restaurantes" asp-action="Index">Restaurantes</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Menus" asp-action="Index">Menu</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Mesas" asp-action="Index">Mesas</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Reservas" asp-action="Index">Reservas</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Reseña" asp-action="Index">Reseñas</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Pagoes" asp-action="Index">Pagos</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Ordens" asp-action="Index">Ordenes</a>
+                <a class="dropdown-item" asp-area="" asp-controller="OrdenDetalles" asp-action="Index">Detalles de Ordenes</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Climas" asp-action="Index">Clima</a>
+            </div>
+        </div>
+        <a asp-action="Create" class="def-btn">
+            Agregar Menu
+        </a>
+    </div>
+    <div class="mid-crud-bar">
+        <form asp-action="Index" class="search-bar">
+            <input name="busqueda" placeholder="Buscar usuario..." class="search-input" id="input-search" />
+            <button type="submit" aria-label="Buscar" class="search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+            </button>
+        </form>
+
+        <div class="dropdown">
+            <button id="dropdown-sort-btn" data-toggle="dropdown" class="def-btn">
+                Ordenar
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up-alt btn-icon" viewBox="0 0 16 16">
+                    <path d="M3.5 13.5a.5.5 0 0 1-1 0V4.707L1.354 5.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.5.5 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 4.707zm4-9.5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5" />
+                </svg>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown-filter-btn">
+                <a class="dropdown-item" href="@Url.Action("Index", new { orden = "NombreAsc" })">Nombre Ascendente</a>
+                <a class="dropdown-item" href="@Url.Action("Index", new { orden = "NombreDes" })">Nombre Descendente</a>
+                <a class="dropdown-item" href="@Url.Action("Index", new { orden = "EmailAsc" })">Email Ascendente</a>
+                <a class="dropdown-item" href="@Url.Action("Index", new { orden = "EmailDes" })">Email Descendente</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button id="dropdown-filter-btn" data-toggle="dropdown" class="def-btn">
+                Filtros
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up-alt btn-icon" viewBox="0 0 16 16">
+                    <path d="M3.5 13.5a.5.5 0 0 1-1 0V4.707L1.354 5.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.5.5 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 4.707zm4-9.5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5" />
+                </svg>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown-filter-btn">
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+<div class="table-container">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombrePlato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+                <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePlato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="crud-btn">Detalles</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="crud-btn">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="crud-btn" id="crud-delete-btn">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
