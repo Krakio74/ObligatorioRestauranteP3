@@ -1,0 +1,445 @@
+﻿@model MultiModel
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .status-select {
+            border: 2px solid black;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 250px;
+            color: black;
+        }
+
+            .status-select select {
+                width: 100%;
+                padding: 5px;
+            }
+
+        .status-available {
+            border-color: green;
+        }
+
+        .status-reserved {
+            border-color: yellow;
+        }
+
+        .status-occupied {
+            border-color: red;
+        }
+
+        .menu, .order-description, .actions {
+            border: 2px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .menu {
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .order-description {
+            height: 100px;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .actions button {
+                margin: 5px 0;
+                padding: 10px;
+                border: 2px solid black;
+                background-color: white;
+                cursor: pointer;
+            }
+
+                .actions button:hover {
+                    background-color: #f0f0f0;
+                }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            border: 1px solid #888;
+            width: 75%;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .table-wrapper {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <div class="status-select status-available">
+                <label for="availableTables">Disponible</label>
+                <select id="availableTables" onchange="handleSelectChange('availableTables')">
+                    <option value="">--Seleccione una mesa--</option>
+                    @foreach (var mesa in Model.Mesas.Where(m => !Model.Reservas.Any(r => r.MesaId == m.Id)))
+                    {
+                        <option value="@mesa.NumeroMesa">@mesa.NumeroMesa</option>
+                    }
+                </select>
+            </div>
+
+            <div class="status-select status-reserved">
+                <label for="reservedTables">Reservadas</label>
+                <select id="reservedTables" onchange="handleSelectChange('reservedTables')">
+                    <option value="">--Seleccione una reserva--</option>
+                    @foreach (var reserva in Model.Reservas.Where(r => r.Fecha > DateTime.Now))
+                    {
+                        var usuario = Model.Usuarios.FirstOrDefault(u => u.Id == reserva.Clienteid);
+                        if (usuario != null)
+                        {
+                            <option value="@reserva.Mesa.NumeroMesa" data-reserva="@reserva.Id">
+                                Mesa - @reserva.Mesa.NumeroMesa - Reserva por: @usuario.Nombre @usuario.Apellido - Día: @reserva.Fecha.ToString("dd-MM")
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="@reserva.Mesa.NumeroMesa" data-reserva="@reserva.Id">
+                                Mesa - @reserva.Mesa.NumeroMesa - Reserva por: Desconocido - Día: @reserva.Fecha.ToString("dd-MM")
+                            </option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="status-select status-occupied">
+                <label for="occupiedTables">Ocupadas</label>
+                <select id="occupiedTables" onchange="handleSelectChange('occupiedTables')">
+                    <option value="">--Seleccione una mesa--</option>
+                    @foreach (var reserva in Model.Reservas.Where(r => r.Fecha > DateTime.Now.AddHours(-4)))
+                    {
+                        <option value="@reserva.Mesa.NumeroMesa" data-reserva="@reserva.Id">
+                            Mesa - @reserva.Mesa.NumeroMesa - Día: @reserva.Fecha.ToString("dd-MM-yyyy HH:mm")
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <button id="openMenuButton" class="btn btn-primary">Tomar Pedido</button>
+            <div id="errorMensaje" style="color:red; display:none;">Seleccione una mesa para continuar</div>
+        </div>
+
+        <div>
+            <div class="menu">
+                <div>
+                    Ordenes
+                </div>
+                <button id="mostrarPedidosBtn" class="btn btn-primary">Mostrar pedidos</button>
+            </div>
+
+            <div id="menuModalPedidos" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="listaOrdenesContainer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <button>Cobrar</button>
+        </div>
+    </div>
+
+    <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Menú</h2>
+
+            <div class="input-group mb-3">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre del plato..." class="form-control">
+                
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table" id="menuTable">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Menus.FirstOrDefault().NombrePlato)</th>
+                            <th>@Html.DisplayNameFor(model => model.Menus.FirstOrDefault().Descripcion)</th>
+                            <th>@Html.DisplayNameFor(model => model.Menus.FirstOrDefault().Precio)</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Menus)
+                        {
+                            <tr class="menu-item" data-id="@item.Id" data-precio="@item.Precio">
+                                <td>@Html.DisplayFor(modelItem => item.NombrePlato)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger decrement" data-id="@item.Id">-</button>
+                                    <input type="text" id="quantity-@item.Id" value="0" readonly style="width: 30px; text-align: center;" />
+                                    <button type="button" class="btn btn-success increment" data-id="@item.Id">+</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <button id="submitOrder" class="btn btn-primary">Enviar Pedido</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Función para manejar la búsqueda cuando se presiona el botón
+            $('#searchButton').click(function () {
+                var searchText = $('#searchInput').val().trim().toLowerCase(); // Obtener el texto de búsqueda en minúsculas y sin espacios en blanco al inicio y al final
+                filterMenu(searchText);
+            });
+
+            // Función para manejar la búsqueda cuando se modifica el texto en el campo
+            $('#searchInput').on('input', function () {
+                var searchText = $(this).val().trim().toLowerCase(); // Obtener el texto de búsqueda en minúsculas y sin espacios en blanco al inicio y al final
+                filterMenu(searchText);
+            });
+
+            // Función para filtrar los elementos del menú según el texto de búsqueda
+            function filterMenu(searchText) {
+                $('#menuTable tbody .menu-item').each(function () {
+                    var nombrePlato = $(this).find('td:eq(0)').text().trim().toLowerCase(); // Obtener el nombre del plato en minúsculas y sin espacios en blanco al inicio y al final
+                    if (nombrePlato.includes(searchText)) {
+                        $(this).show(); // Mostrar si el nombre del plato contiene el texto de búsqueda
+                    } else {
+                        $(this).hide(); // Ocultar si no contiene el texto de búsqueda
+                    }
+                });
+            }
+        });
+    </script>
+        
+    <script>
+        // Función para manejar el cambio en el select de mesas
+        function handleSelectChange(selectId) {
+            var availableTables = document.getElementById("availableTables");
+            var reservedTables = document.getElementById("reservedTables");
+            var occupiedTables = document.getElementById("occupiedTables");
+
+            var selectedElement = document.getElementById(selectId);
+
+            // Habilita o deshabilita los selects de acuerdo al valor seleccionado
+            if (selectedElement.value) {
+                availableTables.disabled = (selectId !== "availableTables");
+                reservedTables.disabled = (selectId !== "reservedTables");
+                occupiedTables.disabled = (selectId !== "occupiedTables");
+            } else {
+                availableTables.disabled = false;
+                reservedTables.disabled = false;
+                occupiedTables.disabled = false;
+            }
+        }
+
+        $(document).ready(function () {
+            var modal = $('#menuModal'); // Selecciona el modal de menú
+            var selectedMesa = null; // Variable para almacenar la mesa seleccionada
+            var selectedReservaId = $("#reservedTables").find(":selected").data("reserva"); // Variable para almacenar el ID de reserva seleccionado
+
+            // Evento de cambio en las mesas disponibles
+            $('#availableTables').change(function () {
+                selectedMesa = $(this).val(); // Obtiene el valor de la mesa seleccionada
+                selectedReservaId = null; // Reinicia el ID de reserva seleccionado
+                $('#reservedTables').val(''); // Limpia el valor del select de mesas reservadas
+            });
+
+            // Evento de cambio en las mesas reservadas
+            $('#reservedTables').change(function () {
+                selectedReservaId = $(this).find(':selected').data('reserva'); // Obtiene el ID de reserva seleccionado
+                selectedMesa = $(this).val(); // Obtiene el valor de la mesa seleccionada
+                $('#availableTables').val(''); // Limpia el valor del select de mesas disponibles
+            });
+
+            // Evento click para abrir el modal de menú
+            $('#openMenuButton').click(function () {
+                if (selectedMesa) {
+                   
+                    modal.show(); // Muestra el modal si hay una mesa seleccionada
+                    $('#errorMensaje').hide(); // Oculta el mensaje de error si está visible
+                } else {
+                    $('#errorMensaje').show(); // Muestra el mensaje de error si no hay mesa seleccionada
+                }
+            });
+
+            // Evento click en el botón de cerrar el modal
+            $('.close').click(function () {
+                modal.hide(); // Oculta el modal al hacer clic en el botón de cerrar
+                clearMenuInputs(); // Limpia los campos del menú al cerrar el modal
+            });
+
+            // Evento para cerrar el modal haciendo clic fuera de él
+            window.onclick = function (event) {
+                if (event.target == modal[0]) {
+                    modal.hide(); // Oculta el modal si se hace clic fuera de él
+                    clearMenuInputs(); // Limpia los campos del menú al cerrar el modal
+                }
+            };
+
+            // Función para limpiar los campos del menú
+            function clearMenuInputs() {
+                $(".menu-item").each(function () {
+                    var id = $(this).data("id");
+                    $("#quantity-" + id).val(0); // Establece la cantidad a 0 para cada elemento de menú
+                });
+            }
+
+            // Evento click en los botones de incrementar cantidad
+            $('.increment').click(function () {
+                var id = $(this).data('id'); // Obtiene el ID del elemento
+                var input = $("#quantity-" + id); // Selecciona el input de cantidad correspondiente
+                var value = parseInt(input.val()); // Obtiene el valor actual del input
+                input.val(value + 1); // Incrementa en 1 el valor del input
+            });
+
+            // Evento click en los botones de decrementar cantidad
+            $('.decrement').click(function () {
+                var id = $(this).data('id'); // Obtiene el ID del elemento
+                var input = $("#quantity-" + id); // Selecciona el input de cantidad correspondiente
+                var value = (input.val()); // Obtiene el valor actual del input
+                if (value > 0) {
+                    input.val(value - 1); // Decrementa en 1 el valor del input si es mayor que 0
+                }
+            });
+            $(document).ready(function () {
+                var listaDeOrdenes = []; // Inicializa la lista de órdenes vacía
+
+                // Función para agregar una orden a la lista
+                $('#submitOrder').click(function () {
+                    var orders = [];
+                    var total = 0; // Inicializa el total a 0
+
+                    // Recorre todos los elementos de menú seleccionados
+                    $(".menu-item").each(function () {
+                        var id = $(this).data("id"); // Obtiene el ID del menú
+                        var price = parseFloat($(this).data("price")); // Obtiene el precio del menú
+                        var quantity = parseInt($("#quantity-" + id).val()); // Obtiene la cantidad seleccionada
+                        if (quantity > 0) {
+                            var itemTotal = price * quantity; // Calcula el total para este item
+                            orders.push({ MenuId: id, Cantidad: quantity, Precio: price, TotalItem: itemTotal }); // Agrega el menú, cantidad y precio al arreglo de órdenes
+                        }
+                    });
+
+                    var selectedReservaId = $("#reservedTables").find(":selected").data("reserva");
+                    var total = parseFloat($('#total').val()); // Valor total ingresado
+
+                    var data = {
+                        ReservaId: selectedReservaId, // ID de reserva seleccionado
+                        Total: total, // Valor total con descuento
+                        OrdenDetalles: orders // Detalles de la orden (menús seleccionados con cantidades)
+                    };
+
+                    // Agrega la orden a la lista de órdenes
+                    listaDeOrdenes.push(data);
+
+                    alert('Orden agregada a la lista correctamente'); // Muestra una alerta de éxito
+                    $('#menuModal').hide(); // Oculta el modal después de agregar la orden
+
+                    console.log("Lista de Ordenes: ", listaDeOrdenes); // Muestra la lista de órdenes en la consola
+                });
+
+                // Función para mostrar las órdenes en el modal
+                $('#mostrarPedidosBtn').click(function () {
+                    // Construir el contenido HTML para mostrar las órdenes
+                    var contenidoHTML = '<h2>Listado de Órdenes</h2>';
+                    contenidoHTML += '<ul>';
+                    listaDeOrdenes.forEach(function (orden, index) {
+                        contenidoHTML += '<li>';
+                        contenidoHTML += '<strong>Orden ' + (index + 1) + ':</strong> Reserva ID: ' + orden.ReservaId + ', Total: ' + orden.Total;
+                        contenidoHTML += '<ul>';
+                        orden.OrdenDetalles.forEach(function (detalle) {
+                            contenidoHTML += '<li>Menú ID: ' + detalle.MenuId + ', Cantidad: ' + detalle.Cantidad + ', Precio: ' + detalle.Precio + ', Total Item: ' + detalle.TotalItem + '</li>';
+                        });
+                        contenidoHTML += '</ul>';
+                        contenidoHTML += '</li>';
+                    });
+                    contenidoHTML += '</ul>';
+
+                    // Mostrar el contenido en el modal
+                    $('#listaOrdenesContainer').html(contenidoHTML);
+
+                    // Mostrar el modal
+                    $('#menuModalPedidos').show();
+                });
+
+                // Función para cerrar el modal si se hace clic en la X
+                $('.close').click(function () {
+                    $('#menuModalPedidos').hide();
+                });
+            });
+
+            
+        });
+        function mostrarOrdenes() {
+            console.log("Lista de Ordenes: ", listaDeOrdenes);
+        }
+
+        // Función para enviar todas las órdenes almacenadas a través de AJAX
+        function enviarOrdenes() {
+            listaDeOrdenes.forEach(orden => {
+                fetch('/Ordens/CreateOrdens', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orden) // Convierte los datos a formato JSON antes de enviarlos
+                })
+                    .then(response => response.json()) // Parsea la respuesta como JSON
+                    .then(data => {
+                        console.log('Success:', data);
+                        alert('Orden creada correctamente'); // Muestra una alerta de éxito
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error); // Maneja errores mostrando el mensaje en la consola
+                        alert('Error al crear la orden'); // Muestra una alerta de error
+                    });
+            });
+
+            // Limpiar la lista de órdenes después de enviarlas
+            listaDeOrdenes = [];
+        }
+    </script>
+   
+
+</body>

@@ -1,0 +1,126 @@
+create data base Obligatorio
+
+create table Usuario (
+    ID int identity(1,1) primary key,
+    Nombre varchar(50) not null,
+    Apellido varchar(50) not null,
+    Email varchar(100) not null,
+    Telefono varchar(20) null,
+    Contraseña varchar(100) not null
+);
+
+create table FotoUsuario (
+    UsuarioId int primary key,
+    Foto int,
+    foreign key (UsuarioId) references Usuario(ID)
+);
+
+create table Cliente (
+    ID int primary key,
+    TipoCliente varchar(20) not null,
+    foreign key (ID) references Usuario(ID),
+    constraint chk_tipocliente check (TipoCliente in ('Nuevo', 'Frecuente', 'Vip'))
+);
+
+create table Empleado (
+    ID int primary key,
+    Rango varchar(50) not null,
+    Estado varchar(20) not null,
+    foreign key (ID) references Usuario(ID),
+    constraint chk_rango check (Rango in ('Administrador', 'Rango1', 'Rango2', 'Rango3', 'Rango4'))
+);
+
+create table Restaurante (
+    ID int identity(1,1) primary key,
+    Nombre varchar(50) not null,
+    Direccion varchar(100) not null,
+    Telefono varchar(20) not null,
+    HoraApertura time not null,
+    HoraCierre time not null
+);
+
+create table FotoRestaurante (
+    RestauranteId int primary key,
+    Foto int,
+    foreign key (RestauranteId) references Restaurante(ID)
+);
+
+create table Menu (
+    ID int identity(1,1) ,
+    NombrePlato varchar(50) not null,
+    Descripcion varchar(255) not null,
+    Precio numeric(14,2),
+    primary key (ID)
+);
+
+create table FotoMenu (
+    MenuId int primary key,
+    Foto int,
+    foreign key (MenuId) references Menu(ID)
+);
+
+create table Mesa (
+    ID int identity(1,1) primary key,
+    NumeroMesa int not null,
+    Capacidad int not null,
+    Restauranteid int,
+    foreign key (RestauranteId) references Restaurante(ID)
+);
+
+create table Reserva (
+    ID int identity(1,1) primary key,
+    Clienteid int,
+    RestauranteId int,
+    MesaId int,
+    Fecha datetime not null,
+    Estado varchar(20) not null,
+    foreign key (ClienteId) references Cliente(ID),
+    foreign key (RestauranteId) references Restaurante(ID),
+    foreign key (MesaId) references Mesa(ID)
+);
+
+create table Reseña (
+    ID int identity(1,1) primary key,
+    ReservaId int,
+    Fecha date not null,
+    Comentario varchar(255) not null,
+    ClienteId int,
+    foreign key (ReservaId) references Reserva(ID),
+    foreign key (ClienteId) references Cliente(ID)
+);
+
+create table Pago (
+    ID int identity(1,1) primary key,
+    ReservaID int,
+    Monto numeric(14,2),
+    Fecha date not null,
+    MetodoPago varchar(30),
+    foreign key (ReservaID) references Reserva(ID)
+);
+
+create table Orden (
+    ID int identity(1,1) primary key,
+    ReservaId int,
+    Total numeric(20,2) not null,
+    Descuento numeric(20,2),
+    foreign key (ReservaId) references Reserva(ID)
+);
+
+create table OrdenDetalle (
+    ID int identity(1,1) primary key,
+    OrdenId int,
+    MenuId int,
+    RestauranteId int,
+    Cantidad int not null,
+    foreign key (OrdenId) references Orden(ID),
+    foreign key (MenuId) references Menu(ID),
+    foreign key (RestauranteId) references Restaurante(ID)
+);
+
+create table Clima
+(
+   ID int identity (1,1) primary key,
+   Fecha time,
+   Temperatura varchar(20),
+   DescripcionClima varchar(50)
+);

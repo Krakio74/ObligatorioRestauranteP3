@@ -1,0 +1,105 @@
+﻿@model List<ObligatorioP3.Models.Reseña>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form asp-action="PublicarReseña" method="post">
+    <div class="post-bar">
+        <input type="text" name="comentario" placeholder="Escribir reseña..." class="post-text" id="input-search" />
+        <button type="submit" class="post-btn">Publicar</button>
+    </div>
+    <div class="rev-posting">
+        <div class="star-rating">
+            <input type="radio" id="star5" name="puntaje" value="5" /><label for="star5" title="5 estrellas"><i class="fas fa-star"></i></label>
+            <input type="radio" id="star4" name="puntaje" value="4" /><label for="star4" title="4 estrellas"><i class="fas fa-star"></i></label>
+            <input type="radio" id="star3" name="puntaje" value="3" /><label for="star3" title="3 estrellas"><i class="fas fa-star"></i></label>
+            <input type="radio" id="star2" name="puntaje" value="2" /><label for="star2" title="2 estrellas"><i class="fas fa-star"></i></label>
+            <input type="radio" id="star1" name="puntaje" value="1" /><label for="star1" title="1 estrella"><i class="fas fa-star"></i></label>
+        </div>
+
+
+        <div class="dropdown">
+            <button id="dropdownMenuButton" data-toggle="dropdown" class="def-btn">
+                Ordenar
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="@Url.Action("Index", new { orden = "OrdenarFechaAsc" })">Fecha Ascendente</a>
+                <a class="dropdown-item" href="@Url.Action("Index", new { orden = "OrdenarFechaDes" })">Fecha Descendente</a>
+                <a class="dropdown-item" href="@Url.Action("Index", new { orden = "OrdenarPuntajeAsc" })">Puntaje Ascendente</a>
+                <a class="dropdown-item" href="@Url.Action("Index", new { orden = "OrdenarPuntajeDes" })">Puntaje Descendente</a>
+            </ul>
+        </div>
+    </div>
+</form>
+
+
+
+<div class="review-section">
+    <table class="revtable">
+        <tbody>
+            @foreach (var reseña in Model)
+            {
+                <tr>
+                    <td class="rev-header">
+                        <div class="rev-pic">   
+
+                        </div>
+                        <div class="cliente-tag" id="@(reseña.Cliente.TipoCliente.ToLower())">
+                            @reseña.Cliente.TipoCliente
+                        </div>
+                    </td>
+                    <td class="rev-body">
+                        <div class="rev-bodyhead">
+                            <div class="rev-name">
+                                @($"{reseña.Cliente.Usuario.Nombre} {reseña.Cliente.Usuario.Apellido}")
+                            </div>
+                            <div class="rev-puntaje">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= reseña.Puntaje)
+                                    {
+                                        <i class="fas fa-star" style="color: gold;"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="far fa-star" style="color: gold;"></i>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="rev-msg">
+                            @reseña.Comentario
+                        </div>
+                        <div class="rev-date">
+                            @reseña.Fecha.ToString("yyyy-MM-dd")
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+@* @{
+    var anteriordeshabilitado = !Model.PaginasAnteriores ? "disabled" : "";
+    var siguientedeshabilitado = !Model.PaginasPosteriores ? "disabled" : "";
+}
+
+
+<div class="pag-bar">
+    <a asp-action="Index" asp-route-ordenActual="@ViewData["OrdenActual"]" asp-route-numpag="@(Model.PaginaInicio - 1)" asp-route-filtroActual="@ViewData["FiltroActual"]" class="pag-btn @anteriordeshabilitado">Anterior</a>
+
+    @for (var i = 1; i <= Model.PaginasTotales; i++)
+    {
+        var paginaactiva = (i == Model.PaginaInicio) ? "active" : "";
+        <a asp-action="Index" asp-route-ordenActual="@ViewData["OrdenActual"]" asp-route-numpag="@i" asp-route-filtroActual="@ViewData["FiltroActual"]" class="pag-btn @paginaactiva">@i</a>
+    }
+
+    <a asp-action="Index" asp-route-ordenActual="@ViewData["OrdenActual"]" asp-route-numpag="@(Model.PaginaInicio + 1)" asp-route-filtroActual="@ViewData["FiltroActual"]" class="pag-btn @siguientedeshabilitado">Siguiente</a>
+</div> *@
